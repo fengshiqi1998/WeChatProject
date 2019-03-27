@@ -1,5 +1,5 @@
 var formatTpl = require('./formatTpl.js').formatTpl;
-var Menu = require('./menu.js');
+var Menu = require('./menuhandle.js');
 
 var EventHandle = {
     eventMsgHandle : function(wxmsg, retmsg) {

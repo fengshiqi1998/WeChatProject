@@ -1,6 +1,5 @@
 const awyhttp = require('awyhttp');
 var wxkey = require('./weixinkey.js');
-// var tokenApi = require('./get_access_token.js');
 var tokenApi = require('./weixinToken.js');
 
 var appid = wxkey.appid;
@@ -50,10 +49,8 @@ var menu_data = {
         
     ]
 };
-asyc function getTok() {
-	return tokenApi.getToken();
-}
-getTok().then(ret => {
+
+tokenApi.getToken().then(ret => {
     var json_menu = JSON.stringify(menu_data);
     console.log(ret);
     var create_menu_api = `https://api.weixin.qq.com/cgi-bin/menu/create?access_token=${ret.data}`;

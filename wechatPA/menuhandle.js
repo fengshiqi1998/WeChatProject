@@ -1,3 +1,5 @@
+var formatTpl = require('./formatTpl.js').formatTpl;
+
 var Menu = {
 	clickKeyMsg : function(wxmsg, retmsg) {
 	    if (wxmsg.EventKey == 'about-us') {
@@ -8,8 +10,8 @@ var Menu = {
 	        return "success";
 	    }
 	},
-	viewKeyMsg ： function(wxmsg, retmsg) {
-    		console.log(wxmsg.EventKey);
+  viewKeyMsg : function(wxmsg, retmsg) {
+		  console.log(wxmsg.EventKey);
 	}
 }
 
