@@ -1,6 +1,7 @@
 const awyhttp = require('awyhttp');
 var wxkey = require('./weixinkey.js');
-var tokenApi = require('./get_access_token.js');
+// var tokenApi = require('./get_access_token.js');
+var tokenApi = require('./weixinToken.js');
 
 var appid = wxkey.appid;
 var appsecret = wxkey.appsecret;
