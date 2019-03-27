@@ -10,6 +10,9 @@ var EventHandle = {
                 return formatTpl(retmsg);
 
             case 'subscribe':
+								if(wxmsg.EventKey !== undefined) {
+										console.log('用户关注，场景值：', wxmsg.EventKey);
+								}
                 console.log('User subscribe, OpenID:', wxmsg.FromUserName);
                 retmsg.msg = '你好，欢迎关注本公众号，这是一个教学用的测试号';
                 retmsg.msgtype = 'text';
@@ -28,7 +31,10 @@ var EventHandle = {
                 return viewKeyMsg(wxmsg, retmsg);
 
             case 'SCAN':
-                return '';
+                console.log('用户扫码，key：', wxmsg.EventKey);
+								retmsg.msg = wxmsg.EventKey;
+								retmsg.msgtype = 'text';
+								return formatTpl(retmsg);
                 //return scanQrcode(xmsg, retmsg);
 
             default:
@@ -37,5 +43,20 @@ var EventHandle = {
 
     }
 }
+
+function clickKeyMsg(wxmsg, retmsg) {
+    if (wxmsg.EventKey == 'about-us') {
+        retmsg.msg = `我们是奋斗的程序员`;
+        retmsg.msgtype = 'text';
+        return formatTpl(retmsg);
+    } else {
+        return "success";
+    }
+}
+
+function viewKeyMsg(wxmsg, retmsg) {
+    console.log(wxmsg.EventKey);
+}
+
 
 module.exports = EventHandle;

@@ -2,7 +2,7 @@ const awyhttp = require('awyhttp');
 const fs = require('fs');
 var wxkey = require('./weixinkey.js');
 
-const token_path = 'tmp/access_token.txt';
+const token_path = '/tmp/fsq_token.save';
 
 var tokenApi = {
 	token_api: `https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=${wxkey.appid}&secret=${wxkey.appsecret}`,

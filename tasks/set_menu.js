@@ -1,11 +1,4 @@
-const awyhttp = require('awyhttp');
-var wxkey = require('./weixinkey.js');
-var tokenApi = require('./get_access_token.js');
-
-var appid = wxkey.appid;
-var appsecret = wxkey.appsecret;
-
-var token_api = `https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=${appid}&secret=${appsecret}`;
+var upload = require('./upload_menu.js');
 
 var menu_data = {
     button : [
@@ -23,7 +16,7 @@ var menu_data = {
                     url  : "https://nodejs.org/dist/latest-v10.x/docs/api/"
                 },
                 {
-                    name : "awy-use",
+                    name : "awy",
                     type : "view",
                     url  : "https://awy.linuslinux.com"
                 },
@@ -49,22 +42,6 @@ var menu_data = {
         
     ]
 };
-asyc function getTok() {
-	return tokenApi.getToken();
-}
-getTok().then(ret => {
-    var json_menu = JSON.stringify(menu_data);
-    console.log(ret);
-    var create_menu_api = `https://api.weixin.qq.com/cgi-bin/menu/create?access_token=${ret.data}`;
 
-    return awyhttp.post(create_menu_api, {
-        data : json_menu,
-        headers : {
-            'Content-Type'  : 'text/plain'
-        }
-    }).then(data => {
-        console.log(data);
-    }, err => {
-        console.log(err);
-    });
-});
+var JSON_menu = JSON.stringify(menu_data);
+upload(menu_data);

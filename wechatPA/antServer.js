@@ -1,4 +1,5 @@
-var tokenApi = require('./get_access_token.js');// token
+//var tokenApi = require('./get_access_token.js');// token
+var tokenApi = require('./weixinToken.js');
 var msgApi = require('./msghandle.js');// 消息处理
 var eventApi = require('./eventhandle.js');// 事件处理
 var menuApi = require('./menu.js');// 菜单
