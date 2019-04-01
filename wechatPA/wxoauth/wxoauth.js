@@ -76,7 +76,7 @@ ant.get('/wx/oauth/login', async rr => {
 
         rr.res.Body = await new Promise ((rv, rj) => {
                 //使用ejs渲染模板文件
-                ejs.renderFile('pages/oauth.html', 
+                ejs.renderFile('wxoauth/pages/oauth.html', 
                     {user : udata},
                     (err, data) => {
                         if (err) {
@@ -88,6 +88,7 @@ ant.get('/wx/oauth/login', async rr => {
             });
 
     } catch (err) {
+				console.log('err: ', err);
         rr.res.Body = 'Error: render html';
     }
 
