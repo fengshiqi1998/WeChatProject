@@ -1,68 +1,16 @@
-var preApi = require('./prehandle.js');// 预处理
-var imageLog = require('./imageLog.js');
 const awy = require('awy');// awy框架
-const parsexml = require('xml2js').parseString;
 
 var ant = new awy();// awy实例化
 
-// ant add
-ant.add(async (rr, next) => {
-	if (rr.weixinMsg.wxmsg.MsgType == 'image') {
-        imageLog.list.push(rr.weixinMsg.wxmsg.MediaId);
-    }
-    await next(rr);
-}, '/wx/talk');
+//请先运行npm i awy获取更新
 
-ant.add(async (rr, next) => {
-	console.log('promise');    
-    await new Promise((rv, rj) => {
-        parsexml(rr.req.GetBody(), {explicitArray : false}, (err, result) => {
-            if (err) {
-                rr.res.Body = '';
-                rj(err);
-            } else {
-                var xmlmsg = result.xml;
+//开启守护进程模式
+ant.config.daemon = true;
 
-                var data = {
-                    touser      : xmlmsg.FromUserName,
-                    fromuser    : xmlmsg.ToUserName,
-                    msg         : '',
-                    msgtime     : parseInt((new Date()).getTime() / 1000),
-                    msgtype     : ''
-                };
-
-                rv({
-                    wxmsg : xmlmsg,
-                    retmsg : data
-                });
-            }
-        });
-    }).then((data) => {
-        rr.weixinMsg = data;
-    }, err=> {
-        throw err;
-    }).catch(err => {
-        console.log(err);
-    });
-
-    await next(rr);
-
-}, '/wx/talk');
-
-// 服务器请求
-ant.post('/wx/talk', async rr => {
-    
-    console.log(rr.req.GetBody());
-    
-    if (rr.weixinMsg !== undefined) {
-        rr.res.Body = preApi.msgDispatch(
-                        rr.weixinMsg.wxmsg,
-                        rr.weixinMsg.retmsg
-                      );
-    } else {
-        rr.res.Body = '';
-    }
-
-});
+/*
+ *服务启动后，会在pid_file设置的文件写入程序的PID，
+ *可以运行 kill `cat ./weixin_oauth.pid` 终止服务
+*/
+ant.config.pid_file = './weixin_oauth.pid';
 
 module.exports = ant;
