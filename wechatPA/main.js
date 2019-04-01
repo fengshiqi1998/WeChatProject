@@ -1,5 +1,5 @@
 var ant = require('./antServer.js');
-var msg = require('./messageServer.js');
+var handle = require('./handleServer.js');
 var oauth = require('./wxoauth/wxoauth.js');
 
 /*
