@@ -1,4 +1,6 @@
 var ant = require('./antServer.js');
+var msg = require('./messageServer.js');
+var oauth = require('./wxoauth/wxoauth.js');
 
 /*
     请把8200换成自己的端口号，2表示创建两个子进程处理请求，默认会根据CPU核心数量创建。
