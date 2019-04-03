@@ -1,0 +1,19 @@
+<!--pages/home/home.wxml-->
+<view>
+  <text>{{batteryInfo}}</text>
+</view>
+
+<view>
+  <text>{{sys-brand}} - {{sys.model}}</text>
+</view>
+<view>
+  <text>{{sys.system}}</text>
+</view>
+
+<view>
+  <form bindsubmit='goIndex'>
+    <button form-type='submit' class='home-button'>
+      Index
+    </button>
+  </form>
+</view>

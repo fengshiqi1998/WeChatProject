@@ -1,0 +1,8 @@
+/* pages/home/home.wxss */
+
+.home-container {
+  width: 700rpx;
+  padding-left: 45rpx;
+  padding-right: 45rpx;
+  margin-top: 10rpx;
+}
