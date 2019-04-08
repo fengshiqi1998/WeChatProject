@@ -1,0 +1,10 @@
+<!--pages/search/search.wxml-->
+<view>
+<text>搜索：fetch</text>
+</view>
+<view>
+<text class='h1'>fetch</text>
+</view>
+<view>
+  Fetch API提供了一个JavaScript接口，用于访问和操作HTTP管道的部分，例如请求和响应。它还提供了一个全局fetch()方法，该方法提供了一种简单，合理的方式来跨网络异步获取资源。
+</view>

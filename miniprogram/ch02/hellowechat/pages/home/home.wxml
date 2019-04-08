@@ -1,0 +1,23 @@
+<!--pages/home/home.wxml-->
+<view>
+  <text>剩余电量：{{batteryInfo}}</text>
+</view>
+
+<view>
+  <text>{{sys-brand}} - {{sys.model}}</text>
+</view>
+<view>
+  <text>系统版本：{{sys.system}}</text>
+</view>
+
+<view>
+  <image src='{{imgUrl}}'></image>
+</view>
+
+<view>
+  <form bindsubmit='goSearch'>
+    <button form-type='submit' class='sub-button'>
+      Submit
+    </button>
+  </form>
+</view>

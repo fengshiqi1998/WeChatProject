@@ -1,0 +1,13 @@
+{
+  "pages":[
+    "pages/home/home",
+    "pages/search/search",
+    "pages/logs/logs"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "JS速查手册",
+    "navigationBarTextStyle":"black"
+  }
+}

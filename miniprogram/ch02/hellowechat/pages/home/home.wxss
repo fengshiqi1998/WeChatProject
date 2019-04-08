@@ -1,0 +1,23 @@
+/* pages/home/home.wxss */
+
+.home-container {
+  width: 700rpx;
+  padding-left: 45rpx;
+  padding-right: 45rpx;
+  margin-top: 10rpx;
+}
+
+.home-button {
+  width: 250rpx;
+  height: 100rpx;
+  margin: 10rpx auto;
+}
+
+image {
+  display: block;
+  margin: 20rpx auto;
+}
+
+.sub-button {
+  margin-top: 100rpx;
+}
