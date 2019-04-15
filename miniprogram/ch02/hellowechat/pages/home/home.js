@@ -5,7 +5,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    imgUrl: "../../images/windowsxp.jpg"
+    imgUrl: "../../images/megumi.jpg",
+    searchContent: ''
   },
 
   /**
@@ -33,8 +34,22 @@ Page({
   * 自定义函数
   */
   goSearch: function () {
+    console.log(this.data.searchContent);
+    // console.log(this.data.searchContent);
+    let childPages = this.data.searchContent;
     wx.navigateTo({
-      url: '/pages/search/search',
+      url: `/pages/search/search?content=${childPages}`,
+    });
+
+    this.setData({
+      searchContent: ''
+    });
+  },
+
+  inputSearch: function(e) {
+    //console.log(e.detail.value);
+    this.setData({
+      searchContent: e.detail.value
     });
   },
 

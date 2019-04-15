@@ -1,18 +1,23 @@
-// pages/search/search.js
+// pages/fetch/fetch.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    title: '',
+    tech_content: ''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    console.log(options);
+    console.log(options.content);
+    this.setData({
+      title: options.content
+    });
   },
 
   /**
@@ -26,7 +31,31 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    let requrl = 'https://fsq.masure.cn/ask?kwd=' + this.data.title;
+    let textcontent = '';
+    var that = this;
+    wx.request({
+      url: requrl,
+      data: {},
+      header: {
+        "Content-Type": "application/json" // 默认值
+      },
+      success(res) {
+        console.log(res);
+        if(res.data.status != 'ok') {
+          that.setData({
+            tech_content: res.data.errmsg
+          });
+          return ;
+        }
+        for(let i=0;i<res.data.data.length;i++) {
+          textcontent += res.data.data[i];
+        }
+        that.setData({
+          tech_content: textcontent
+        });
+      }
+    });
   },
 
   /**
