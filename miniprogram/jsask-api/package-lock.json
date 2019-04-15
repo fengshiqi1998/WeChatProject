@@ -1,0 +1,11 @@
+{
+  "requires": true,
+  "lockfileVersion": 1,
+  "dependencies": {
+    "awy": {
+      "version": "1.4.11",
+      "resolved": "https://registry.npmjs.org/awy/-/awy-1.4.11.tgz",
+      "integrity": "sha512-fwdQS94Lo/hFtAwjO0dl4HPF8TWTNfIVS+urk+f5+6keWDlzFT4M3EYCi5bMpL012iGWNEW/mvqPYqnjtwrbeA=="
+    }
+  }
+}
