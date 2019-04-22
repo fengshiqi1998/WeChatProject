@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+		<head>
+				<meta charset="UTF-8">
+				<title>wangEditor demo</title>
+				<link rel="stylesheet" href="../static/css/index.css">
+		</head>
+		<body>
+				<input type="text" placeholder="请输入标题" class="title">
+				<div id="editor">
+						<p>欢迎使用 <b>wangEditor</b> 富文本编辑器</p>
+				</div>
+				<input type="submit" value="提交">
+				<!--<script type="text/javascript" src="./static/js/wangEditor.min.js"></script>
+				<script type="text/javascript" src="./static/js/index.js></script>-->
+				<script type="text/javascript" src="https://unpkg.com/wangeditor@3.1.1/release/wangEditor.min.js"></script>
+				<script type="text/javascript" src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+				<script type="text/javascript">
+						var E = window.wangEditor;
+						var sub = document.querySelector('input[value="提交"]');
+						var editor = new E('#editor');
+						var openid = 'o-RFA1cQn2CIV9jx0KzTVlxjX9g0';
+						var apikey = 'aeb6ca5d2beab56e3921e74cd1d0c3ab4b2893c41k';
+
+						// 或者 var editor = new E( document.getElementById('editor') );
+						editor.create();
+						console.log(sub);
+						sub.onclick = function() {
+								var contents = document.querySelector('#editor').lastChild.lastChild;
+								console.log(contents.innerHTML);
+								postContent(contents.innerHTML);
+						}
+						async function postContent(contents) {
+								/*
+								await $.post('https://awy.d5h5.com/user/login', {
+										'openid':'o-RFA1cQn2CIV9jx0KzTVlxjX9g0',
+										'apikey':'aeb6ca5d2beab56e3921e74cd1d0c3ab4b2893c41k'
+								}, function(data){
+										console.log(data);
+								});
+								*/
+								/*
+								$.post('https://awy.d5h5.com/api/content',{
+										'title': 'title',
+										'content': contents,
+										'content_type' : 'rich-text',
+										'api_token': 't17bdf0b7309412e3aa8b1dccd28e064c11b81f5b1f8ccc80463557dad4c94112k'
+								}, function(data){
+										console.log(data);
+								});
+								*/
+								$.ajax({
+										type: 'POST',
+										url: 'https://awy.d5h5.com/api/content',
+										api_token: 't17bdf0b7309412e3aa8b1dccd28e064c11b81f5b1f8ccc80463557dad4c94112k',
+										data: {
+										'title': 'title',
+										'content': contents,
+										'content_type' : 'rich-text'
+										},
+										success: function(data) {console.log(data);}
+										//dataType: dataType
+								});
+								/*
+								$.post('https://awy.d5h5.com/api/content-list', {
+										'api_token': 't17bdf0b7309412e3aa8b1dccd28e064c11b81f5b1f8ccc80463557dad4c94112k'
+								}, function(data) {
+										console.log(data);
+								});
+								*/
+						}
+		    </script>
+		</body>
+</html>
